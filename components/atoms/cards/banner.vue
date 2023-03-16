@@ -3,7 +3,7 @@
     :id="id"
     :to="`/movies/${item.id}`"
     :class="isHighlight ? 'opacity-100' : 'opacity-40'"
-    class="flex flex-col md:flex-row w-full md:pb-12"
+    class="flex flex-row w-72 md:w-full md:pb-12"
   >
     <img
       :src="require(`@/assets/images/movies/${item.image}`)"
@@ -11,7 +11,7 @@
       alt="movie"
       quality="30"
     />
-    <div class="hidden md:block px-6 pt-6 bg-black-primary w-80 md:my-5">
+    <div class="px-2 pt-4 md:px-6 md:pt-6 bg-black-primary w-80 my-2 md:my-5">
       <div class="flex items-center">
         <img
           src="@/assets/images/icon/star.svg"
@@ -26,7 +26,7 @@
         <img src="@/assets/images/icon/dot.svg" alt="dot-icon" class="mx-1.5" />
         <p class="text-white text-md">Sci-Fi</p>
       </div>
-      <p class="text-white text-xs pt-3">
+      <p class="text-white text-xs pt-3 line-clamp-3 md:line-clamp-7">
         {{ item.overview }}
       </p>
     </div>

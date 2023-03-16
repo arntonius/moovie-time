@@ -8,18 +8,19 @@
       </div>
       <div class="mt-10 md:mt-16 mb-27 flex flex-col md:flex-row w-full">
         <div
-          class="w-92 h-min bg-navy-primary md:bg-gradient-to-b md:from-navy-primary md:to-navy-secondary rounded-xl"
+          class="w-92 h-min bg-navy-primary md:bg-gradient-to-b md:from-navy-primary md:to-navy-secondary rounded-xl p-2"
         >
-          <h6 class="text-white py-5 px-4 border-b-2 border-white">
+          <h6 class="text-white py-3 md:py-5 px-4 border-b-2 border-white">
             Sort Result By
           </h6>
           <div class="w-full">
             <button
-              class="w-full md:w-60 text-sm text-white px-4 py-2 md:mx-2 my-2 md:my-4 bg-gray-septenary flex items-center justify-between rounded"
+              class="mt-5 w-full md:w-60 text-sm text-white px-4 py-2 md:mx-2 my-2 md:my-4 bg-gray-septenary flex items-center justify-between rounded"
               @click="isSortShow = !isSortShow"
             >
               {{ sortingActive }}
               <svg
+                :class="isSortShow ? 'rotate-180' : ''"
                 class="w-4 h-4 ml-2"
                 aria-hidden="true"
                 fill="none"
@@ -79,10 +80,34 @@
               </ul>
             </div>
           </div>
-          <h6 class="text-white py-2 md:py-5 px-4 border-y-2 border-white">
+          <h6
+            class="hidden md:block text-white py-2 md:py-5 px-4 border-y-2 border-white"
+          >
             Genres
           </h6>
-          <div class="px-1 py-2 md:p-4">
+          <button
+            class="flex md:hidden w-full md:w-60 text-sm text-white px-4 py-2 md:mx-2 my-2 md:my-4 bg-gray-septenary items-center justify-between rounded"
+            @click="isSortGenreShow = !isSortGenreShow"
+          >
+            Genres
+            <svg
+              :class="isSortGenreShow ? 'rotate-180' : ''"
+              class="w-4 h-4 ml-2"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <div v-if="isSortGenreShow" class="px-1 py-2 md:p-4">
             <div
               v-for="list in dataCategory"
               :key="list.id"
@@ -151,6 +176,7 @@ export default class MoleculesSectionsList extends Vue {
   maxShow: number = 12
   maxData: number = this.dataMovies.length
   isSortShow: boolean = false
+  isSortGenreShow: boolean = true
   isNoCategory: boolean = false
   isLoadMoreShow: boolean = this.tempMovies.length > this.maxShow
 

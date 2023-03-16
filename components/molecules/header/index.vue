@@ -1,7 +1,27 @@
 <template>
   <div class="bg-black-senary fixed z-40 w-full h-16 flex">
+    <div class="md:hidden flex w-full justify-between items-center p-4">
+      <nuxt-link to="/" class="flex items-center">
+        <img
+          src="@/assets/images/icon/burger-menu.svg"
+          alt="logo"
+          class="w-8 mr-4"
+        />
+        <img
+          src="@/assets/images/logo/movie-time.png"
+          alt="logo"
+          class="w-20"
+        />
+      </nuxt-link>
+      <img
+        v-if="input === ''"
+        src="@/assets/images/icon/search.svg"
+        alt="movies-icon"
+        class="w-4"
+      />
+    </div>
     <div
-      class="w-full max-w-7xl mx-auto flex items-center justify-between px-7"
+      class="hidden md:flex w-full max-w-7xl mx-auto items-center justify-between px-7"
     >
       <div class="flex items-center w-3/5">
         <nuxt-link to="/">

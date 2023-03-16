@@ -1,76 +1,99 @@
 <template>
   <div class="relative">
-    <div class="h-130 w-full relative">
+    <div class="md:h-130 w-full relative">
       <img
         :src="require(`@/assets/images/movies/${dataDetail.image}`)"
         alt=""
-        class="h-full object-cover w-screen z-0 opacity-80"
+        class="hidden md:block h-full object-cover w-screen z-0 opacity-80"
         quality="30"
       />
       <div
-        class="flex items-center absolute bottom-0 bg-black-primary opacity-50 h-20 z-10 w-full"
+        class="hidden md:flex items-center absolute bottom-0 bg-black-primary opacity-50 h-20 z-10 w-full"
       ></div>
-      <div class="w-full absolute top-72 z-20">
-        <div class="w-full max-w-7xl mx-auto px-7 z-10 h-112">
-          <div class="flex">
+      <div class="w-full h-full md:absolute top-32 md:top-72 z-20">
+        <div class="w-full max-w-7xl mx-auto px-4 md:px-7 z-10 h-112">
+          <div class="flex flex-col md:flex-row h-full pt-20 md:pt-0">
             <img
               :src="require(`@/assets/images/movies/${dataDetail.image}`)"
-              alt=""
+              class="h-96 md:h-auto md:w-52 object-cover"
               quality="30"
             />
-            <div class="ml-8">
-              <h6 class="text-lg text-white">{{ parsedDateYear }}</h6>
-              <h2 class="text-white font-bold">{{ dataDetail.title }}</h2>
+            <div class="mt-5 md:ml-8 md:mt-0">
+              <div class="flex justify-between">
+                <div>
+                  <h6 class="text-lg text-black-senary md:text-white">
+                    {{ parsedDateYear }}
+                  </h6>
+                  <h2 class="text-black-senary md:text-white font-bold">
+                    {{ dataDetail.title }}
+                  </h2>
+                </div>
+                <div class="md:hidden flex items-start">
+                  <img src="@/assets/images/icon/star.svg" alt="star-icon" />
+                  <p
+                    class="text-3xl font-bold text-black-senary md:text-white pl-2"
+                  >
+                    {{ dataDetail.rate || 0 }}
+                  </p>
+                </div>
+              </div>
+
               <div class="flex pt-1">
                 <p
                   v-for="(list, key) in dataDetail.category"
                   :key="key"
-                  class="text-sm text-white pr-2"
+                  class="text-sm text-black-senary md:text-white pr-2"
                 >
                   {{ list }}
                 </p>
               </div>
-              <div class="flex items-center h-20 mt-5">
-                <div class="flex items-center pr-8 border-r-2 border-gray-400">
+              <div
+                class="flex flex-col md:flex-row md:items-center md:h-20 mt-5"
+              >
+                <div
+                  class="hidden md:flex items-center pr-8 md:border-r-2 border-gray-400"
+                >
                   <img src="@/assets/images/icon/star.svg" alt="star-icon" />
-                  <p class="text-3xl font-bold text-white pl-4 pr-3">
+                  <p
+                    class="text-3xl font-bold text-black-senary md:text-white pl-4 pr-3"
+                  >
                     {{ dataDetail.rate || 0 }}
                   </p>
-                  <div>
+                  <div class="hidden md:block">
                     <p class="text-xs pt-1 text-gray-tertiary">USER SCORE</p>
-                    <p class="text-xs pt-1 text-white">
+                    <p class="text-xs pt-1 text-black-senary md:text-white">
                       {{ dataDetail.votes || 0 }} VOTES
                     </p>
                   </div>
                 </div>
-                <div class="px-8 border-r-2 border-gray-400">
+                <div class="pt-2 md:pt-0 md:px-8 md:border-r-2 border-gray-400">
                   <p class="text-xs pt-1 text-gray-tertiary">STATUS</p>
-                  <p class="text-xs pt-1 text-white">
+                  <p class="text-xs pt-1 text-black-senary md:text-white">
                     {{ dataDetail.status || 'Un-Publised' }}
                   </p>
                 </div>
-                <div class="px-8 border-r-2 border-gray-400">
+                <div class="pt-2 md:pt-0 md:px-8 md:border-r-2 border-gray-400">
                   <p class="text-xs pt-1 text-gray-tertiary">LANGUAGE</p>
-                  <p class="text-xs pt-1 text-white">
+                  <p class="text-xs pt-1 text-black-senary md:text-white">
                     {{ dataDetail.language || 'English' }}
                   </p>
                 </div>
-                <div class="px-8 border-r-2 border-gray-400">
+                <div class="pt-2 md:pt-0 md:px-8 md:border-r-2 border-gray-400">
                   <p class="text-xs pt-1 text-gray-tertiary">BUDGET</p>
-                  <p class="text-xs pt-1 text-white">
+                  <p class="text-xs pt-1 text-black-senary md:text-white">
                     {{ dataDetail.budget || 100000000 | priceFormat }}
                   </p>
                 </div>
-                <div class="px-8">
+                <div class="pt-2 md:pt-0 md:px-8">
                   <p class="text-xs pt-1 text-gray-tertiary">PRODUCTION</p>
-                  <p class="text-xs pt-1 text-white">
+                  <p class="text-xs pt-1 text-black-senary md:text-white">
                     {{ dataDetail.production || 'none' }}
                   </p>
                 </div>
               </div>
-              <div class="pt-8 w-3/5 pr-10">
+              <div class="pt-8 w-full md:w-3/5 pr-10">
                 <p class="text-sm text-red-primary font-bold">OVERVIEW</p>
-                <p class="text-sm leading-7 pt-2">
+                <p class="text-sm text-black-primary leading-7 pt-2">
                   {{ dataDetail.overview || '' }}
                 </p>
               </div>
@@ -79,8 +102,11 @@
         </div>
       </div>
     </div>
-    <div class="bg-white w-full h-full flex mt-40">
-      <div v-if="dataReview.length !== 0" class="w-full max-w-7xl mx-auto px-7">
+    <div class="bg-white w-full h-full flex mt-10 md:mt-40">
+      <div
+        v-if="dataReview.length !== 0"
+        class="w-full max-w-7xl mx-auto px-4 md:px-7"
+      >
         <h6 class="text-red-primary text-sm font-bold">REVIEWS</h6>
         <div class="flex items-center flex-wrap w-full mt-6 mb-14 gap-8">
           <div v-for="list in dataReview" :key="list.id">

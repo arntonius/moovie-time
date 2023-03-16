@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black-quartenary w-full h-full">
-    <div class="mt-12">
+    <div class="my-12 md:mb-0">
       <client-only>
         <swiper
           ref="mySwiperRef"
@@ -15,7 +15,10 @@
               :is-highlight="activeIndexData === item.id"
             />
           </swiper-slide>
-          <div slot="pagination" class="swiper-pagination"></div>
+          <div
+            slot="pagination"
+            class="hidden md:block swiper-pagination"
+          ></div>
         </swiper>
       </client-only>
     </div>
@@ -84,10 +87,18 @@ export default class MoleculesSectionsDiscover extends Vue {
   swiperOption: object = {
     slidesPerView: 2,
     slidesPerGroup: 1,
+    spaceBetween: 290,
+
     initialSlide: 0,
     breakpoints: {
-      1030: {
+      1024: {
         slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+        loop: true,
+      },
+      768: {
+        slidesPerView: 2,
         slidesPerGroup: 1,
         spaceBetween: 30,
         loop: true,
