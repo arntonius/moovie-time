@@ -1,23 +1,24 @@
+<!-- eslint-disable vue/valid-v-model -->
 <template>
   <div class="bg-black-quartenary w-full h-full flex">
-    <div class="w-full max-w-7xl mx-auto px-7 py-20">
+    <div class="w-full max-w-7xl mx-auto px-7 py-10">
       <div>
-        <div class="w-28 h-1 bg-orange-400" />
-        <h4 class="text-white pt-3">Movies</h4>
+        <div class="w-28 h-1 bg-red-secondary" />
+        <h4 class="text-base md:text-xl text-white pt-3">Movies</h4>
       </div>
-      <div class="mt-16 mb-27 flex w-full">
+      <div class="mt-10 md:mt-16 mb-27 flex flex-col md:flex-row w-full">
         <div
-          class="w-80 h-min bg-gradient-to-b from-navy-primary to-navy-secondary rounded-xl"
+          class="w-92 h-min bg-navy-primary md:bg-gradient-to-b md:from-navy-primary md:to-navy-secondary rounded-xl"
         >
           <h6 class="text-white py-5 px-4 border-b-2 border-white">
             Sort Result By
           </h6>
           <div class="w-full">
             <button
-              class="text-white px-4 py-2 mx-5 my-4 bg-gray-septenary w-52 flex items-center justify-between rounded"
+              class="w-full md:w-60 text-sm text-white px-4 py-2 md:mx-2 my-2 md:my-4 bg-gray-septenary flex items-center justify-between rounded"
               @click="isSortShow = !isSortShow"
             >
-              Popularity
+              {{ sortingActive }}
               <svg
                 class="w-4 h-4 ml-2"
                 aria-hidden="true"
@@ -36,78 +37,93 @@
             </button>
             <div
               v-if="isSortShow"
-              class="z-10 mx-5 mb-4 w-52 divide-gray-100 rounded-lg shadow bg-gray-700"
+              class="flex flex-col z-10 md:mx-2 mb-4 w-full md:w-60 divide-gray-100 rounded-lg shadow bg-gray-700"
             >
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
                 <button
-                  class="text-white px-2.5 py-3"
-                  @click="setSorting('PopularityAscending')"
+                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
+                  @click="setSorting('Popularity Ascending')"
                 >
                   Popularity Ascending
                 </button>
                 <button
-                  class="text-white px-2.5 py-3"
-                  @click="setSorting('PopularityDescending')"
+                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
+                  @click="setSorting('Popularity Descending')"
                 >
                   Popularity Descending
                 </button>
                 <button
-                  class="text-white px-2.5 py-3"
-                  @click="setSorting('ReleaseDateAscending')"
+                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
+                  @click="setSorting('Release Date Ascending')"
                 >
                   Release Date Ascending
                 </button>
                 <button
-                  class="text-white px-2.5 py-3"
-                  @click="setSorting('ReleaseDateDescending')"
+                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
+                  @click="setSorting('Release Date Descending')"
                 >
                   Release Date Descending
                 </button>
                 <button
-                  class="text-white px-2.5 py-3"
-                  @click="setSorting('RatingAscending')"
+                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
+                  @click="setSorting('Rating Ascending')"
                 >
                   Rating Ascending
                 </button>
                 <button
-                  class="text-white px-2.5 py-3"
-                  @click="setSorting('RatingDescending')"
+                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
+                  @click="setSorting('Rating Descending')"
                 >
                   Rating Descending
                 </button>
               </ul>
             </div>
           </div>
-          <h6 class="text-white py-5 px-4 border-y-2 border-white">Genres</h6>
-          <div class="p-4">
+          <h6 class="text-white py-2 md:py-5 px-4 border-y-2 border-white">
+            Genres
+          </h6>
+          <div class="px-1 py-2 md:p-4">
             <div
               v-for="list in dataCategory"
               :key="list.id"
-              class="flex items-center justify-between py-2 px-1"
+              class="flex items-center justify-between py-1 md:py-2 px-1"
             >
               <label
                 for="default-checkbox"
-                class="ml-2 text-sm font-medium text-white"
+                class="ml-2 text-xs md:text-sm font-medium text-white"
                 >{{ list.name }}</label
               >
               <input
                 id="default-checkbox"
+                v-model="selectedCategory"
+                :value="list.name"
                 type="checkbox"
-                value=""
                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                @change="handleSelectCategory"
               />
             </div>
           </div>
         </div>
-        <div class="w-full flex justify-between flex-wrap ml-8 gap-3">
+        <div
+          class="w-full flex justify-between flex-wrap mt-5 md:mt-0 md:ml-8 gap-3"
+        >
+          <div
+            v-if="isNoCategory && selectedCategory.length !== 0"
+            class="w-full my-10"
+          >
+            <h4 class="text-center text-white">
+              Oops, your movies is not available
+            </h4>
+          </div>
           <kit-atoms-cards-movies
-            v-for="list in dataMovies.slice(0, maxShow)"
+            v-for="list in tempMovies.slice(0, maxShow)"
             :key="list.id"
             :item="list"
           />
-          <div class="w-full flex justify-center mt-12 mb-20">
+
+          <div class="w-full h-min flex justify-center mt-12 mb-20">
             <button
-              v-if="isLoadMoreShow"
+              v-if="isLoadMoreShow && tempMovies.length !== 0"
               class="py-1.5 cursor-pointer px-4 w-40 bg-red-primary hover:bg-red-secondary rounded-full"
               @click="loadMore()"
             >
@@ -120,19 +136,28 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { Component, Prop, Vue, namespace } from 'nuxt-property-decorator'
+const utils = namespace('utils')
 @Component({})
 export default class MoleculesSectionsList extends Vue {
+  @utils.Getter activeCategoryData!: string
   @Prop({ required: false, type: Array }) readonly dataCategory!: any
   @Prop({ required: false, type: Array }) readonly dataMovies!: any
 
   tempMovies: any = this.dataMovies
-  sortingActive: string = 'PopularityAscending'
+  selectedCategory: any = []
+  sortingActive: string = 'Popularity'
 
   maxShow: number = 12
   maxData: number = this.dataMovies.length
   isSortShow: boolean = false
-  isLoadMoreShow: boolean = this.maxData > this.maxShow
+  isNoCategory: boolean = false
+  isLoadMoreShow: boolean = this.tempMovies.length > this.maxShow
+
+  mounted() {
+    this.selectedCategory.push(this.activeCategoryData)
+    this.handleSelectCategory()
+  }
 
   loadMore() {
     this.maxShow = this.maxShow + 12
@@ -143,55 +168,86 @@ export default class MoleculesSectionsList extends Vue {
   }
 
   setSorting(value: string) {
+    switch (value) {
+      case 'Popularity Ascending':
+        this.sorting(this.tempMovies, this.sortByPopularityAsc)
+        break
+      case 'Popularity Descending':
+        this.sorting(this.tempMovies, this.sortByPopularityDesc)
+        break
+      case 'Release Date Ascending':
+        this.sorting(this.tempMovies, this.sortByReleaseDateAsc)
+        break
+      case 'Release Date Descending':
+        this.sorting(this.tempMovies, this.sortByReleaseDateDesc)
+        break
+      case 'Rating Ascending':
+        this.sorting(this.tempMovies, this.sortByRateAsc)
+        break
+      case 'Rating Descending':
+        this.sorting(this.tempMovies, this.sortByRateDesc)
+        break
+    }
+    this.isSortShow = false
     this.sortingActive = value
   }
 
-  sortByReleaseDateDesc() {
-    const temp = this.dataMovies
+  sortByReleaseDateDesc(a: any, b: any) {
+    return a.release < b.release ? -1 : a.release > b.release ? 1 : 0
+  }
+
+  sortByReleaseDateAsc(a: any, b: any) {
+    return a.release < b.release ? -1 : a.release > b.release ? 0 : 1
+  }
+
+  sortByPopularityDesc(a: any, b: any) {
+    return parseInt(a.votes) - parseInt(b.votes)
+  }
+
+  sortByPopularityAsc(a: any, b: any) {
+    return parseInt(b.votes) - parseInt(a.votes)
+  }
+
+  sortByRateDesc(a: any, b: any) {
+    return parseInt(b.rate) - parseInt(a.rate)
+  }
+
+  sortByRateAsc(a: any, b: any) {
+    return parseInt(b.rate) - parseInt(a.rate)
+  }
+
+  sorting(data: any, fn: any) {
+    const temp = data
     temp.sort((a: any, b: any) => {
-      return a.release < b.release ? -1 : a.release > b.release ? 1 : 0
+      return fn(a, b)
     })
     this.tempMovies = temp
   }
 
-  sortByReleaseDateAsc() {
-    const temp = this.dataMovies
-    temp.sort((a: any, b: any) => {
-      return a.release < b.release ? -1 : a.release > b.release ? 0 : 1
-    })
-    this.tempMovies = temp
+  intersect = (a: any, b: any) => {
+    const setB = new Set(b)
+    return a.filter((el: any) => setB.has(el))
   }
 
-  sortByPopularityDesc() {
-    const temp = this.dataMovies
-    temp.sort((a: any, b: any) => {
-      return parseInt(a.votes) - parseInt(b.votes)
+  handleSelectCategory() {
+    this.maxShow = 12
+    const dataTemp = this.dataMovies
+    this.isLoadMoreShow = false
+    this.isNoCategory = false
+    // eslint-disable-next-line array-callback-return
+    const temp = dataTemp.filter((e: any) => {
+      if (this.intersect(e.category, this.selectedCategory).length !== 0) {
+        return e
+      }
     })
-    this.tempMovies = temp
-  }
-
-  sortByPopularityAsc() {
-    const temp = this.dataMovies
-    temp.sort((a: any, b: any) => {
-      return parseInt(b.votes) - parseInt(a.votes)
-    })
-    this.tempMovies = temp
-  }
-
-  sortByRateDesc() {
-    const temp = this.dataMovies
-    temp.sort((a: any, b: any) => {
-      return parseInt(b.rate) - parseInt(a.rate)
-    })
-    this.tempMovies = temp
-  }
-
-  sortByRateAsc() {
-    const temp = this.dataMovies
-    temp.sort((a: any, b: any) => {
-      return parseInt(b.rate) - parseInt(a.rate)
-    })
-    this.tempMovies = temp
+    if (temp.length === 0) {
+      if (this.dataMovies.length > this.maxShow) this.isLoadMoreShow = true
+      this.tempMovies = this.dataMovies
+      this.isNoCategory = true
+    } else {
+      if (temp.length > this.maxShow) this.isLoadMoreShow = true
+      this.tempMovies = temp
+    }
   }
 }
 </script>

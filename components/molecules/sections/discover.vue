@@ -1,18 +1,21 @@
 <template>
   <div class="bg-black-quartenary w-full h-full">
-    <div class="py-12">
+    <div class="mt-12">
       <client-only>
-        <swiper class="swiper w-full" :options="swiperOption">
-          <swiper-slide>
-            <kit-atoms-cards-banner />
+        <swiper
+          ref="mySwiperRef"
+          class="swiper w-full"
+          :options="swiperOption"
+          @slideChange="setIndex"
+        >
+          <swiper-slide v-for="(item, key) in dataBanner" :key="key">
+            <kit-atoms-cards-banner
+              :id="key"
+              :item="item"
+              :is-highlight="activeIndexData === item.id"
+            />
           </swiper-slide>
-          <swiper-slide>
-            <kit-atoms-cards-banner />
-          </swiper-slide>
-          <swiper-slide>
-            <kit-atoms-cards-banner />
-          </swiper-slide>
-          <swiper-slide />
+          <div slot="pagination" class="swiper-pagination"></div>
         </swiper>
       </client-only>
     </div>
@@ -20,19 +23,19 @@
       <div class="flex w-full justify-between items-end">
         <div>
           <div class="w-28 h-1 bg-red-secondary" />
-          <h4 class="text-white pt-3">Discover Movies</h4>
+          <h4 class="text-base md:text-xl text-white pt-3">Discover Movies</h4>
         </div>
-        <div class="flex items-center space-x-5">
+        <div class="flex items-center space-x-2 md:space-x-5">
           <button
             :class="
               activeSort === 'rate'
                 ? 'bg-red-primary hover:bg-red-secondary'
                 : 'bg-black bg-opacity-20 hover:bg-gray-800'
             "
-            class="py-1.5 px-4 cursor-pointer rounded-full"
+            class="py-1 md:py-1.5 px-2 cursor-pointer rounded-full"
             @click="sortByPopularity()"
           >
-            <p class="text-white text-sm">Popularity</p>
+            <p class="text-white text-xs md:text-sm">Popularity</p>
           </button>
           <button
             :class="
@@ -40,10 +43,10 @@
                 ? 'bg-red-primary hover:bg-red-secondary'
                 : 'bg-black bg-opacity-20 hover:bg-gray-800'
             "
-            class="py-1.5 cursor-pointer px-4 rounded-full"
+            class="py-1 md:py-1.5 cursor-pointer px-0 rounded-full"
             @click="sortByReleaseDate()"
           >
-            <p class="text-white text-sm z-10">Release Date</p>
+            <p class="text-white text-xs md:text-sm z-10">Release Date</p>
           </button>
         </div>
       </div>
@@ -58,22 +61,48 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { Component, Prop, namespace, Vue } from 'nuxt-property-decorator'
+const utils = namespace('utils')
+
 @Component({})
 export default class MoleculesSectionsDiscover extends Vue {
-  @Prop({ required: false, type: Array }) readonly data!: any
+  @utils.Getter activeIndexData!: number
+  @utils.Mutation setActiveIndex!: (value: number) => void
+
+  @Prop({ required: false, type: Array }) readonly dataMovies!: any
+  @Prop({ required: false, type: Array }) readonly dataBanner!: any
   activeSort: 'rate' | 'release' = 'rate'
-  tempMovies: any = this.data
+  tempMovies: any = this.dataMovies
+
+  setIndex() {
+    // @ts-ignore
+    const index = this.$refs.mySwiperRef.swiperInstance.realIndex
+    if (index === this.dataBanner.length - 1) this.setActiveIndex(0)
+    else this.setActiveIndex(parseInt(index + 1))
+  }
 
   swiperOption: object = {
-    slidesPerView: 3,
-    slidesPerGroup: 3,
-    spaceBetween: 10,
+    slidesPerView: 2,
+    slidesPerGroup: 1,
+    initialSlide: 0,
+    breakpoints: {
+      1030: {
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+        loop: true,
+      },
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+    },
   }
 
   sortByReleaseDate() {
     this.activeSort = 'release'
-    const temp = this.data
+    const temp = this.dataMovies
     temp.sort((a: any, b: any) => {
       return a.release < b.release ? -1 : a.release > b.release ? 1 : 0
     })
@@ -82,7 +111,7 @@ export default class MoleculesSectionsDiscover extends Vue {
 
   sortByPopularity() {
     this.activeSort = 'rate'
-    const temp = this.data
+    const temp = this.dataMovies
     temp.sort((a: any, b: any) => {
       return parseInt(a.rate) - parseInt(b.rate)
     })
@@ -96,9 +125,19 @@ export default class MoleculesSectionsDiscover extends Vue {
 </script>
 
 <style>
-.ssr-carousel-dot-icon {
-  width: 100px !important;
-  height: 10px !important;
-  background-color: red !important;
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 60px !important;
+  height: 12px !important;
+  border-radius: 6px !important;
+  background-color: #e74c3c !important;
+}
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 6px !important;
+  background-color: gray !important;
+}
+.swiper-pagination {
+  margin-top: 10px !important;
 }
 </style>

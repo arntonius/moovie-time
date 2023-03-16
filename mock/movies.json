@@ -5,45 +5,50 @@
       "title": "The New Mutants",
       "rate": "7.0",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "new-mutant.png",
-      "backgroundImage": "bg-ww.png"
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."
     },
     {
       "id": 1,
       "title": "Soul",
       "rate": "7.0",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "soul.png",
-      "backgroundImage": "bg-ww.png"
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."
     },
     {
       "id": 2,
       "title": "Tenet",
       "rate": "7.0",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "tenet.png",
-      "backgroundImage": "bg-ww.png"
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."
     },
     {
       "id": 3,
       "title": "The Old Guard",
       "rate": "7.0",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "old-guard.png",
-      "backgroundImage": "bg-ww.png"
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."
     },
     {
       "id": 4,
       "title": "Project Power",
       "rate": "7.0",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "project-power.png",
-      "backgroundImage": "bg-ww.png"
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."
     }
   ],
   "movies": [
@@ -52,7 +57,7 @@
       "title": "Wonder Woman 1984",
       "rate": "7.0",
       "release": "2007-01-17T08:00:00Z",
-      "category": "action",
+      "category": ["Horror", "comedy", "adventure"],
       "image": "wonder-woman.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -61,7 +66,7 @@
       "title": "Below Zero",
       "rate": "6.4",
       "release": "2022-01-17T08:00:00Z",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "below-zero.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -70,7 +75,7 @@
       "title": "The Little Things",
       "rate": "6.3",
       "release": "2021",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "the-little-things.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -79,7 +84,7 @@
       "title": "Outside the Wire",
       "rate": "6.5",
       "release": "2021",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "outside-wire.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -88,7 +93,7 @@
       "title": "Black Water: Abyss",
       "rate": "5.1",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "black-water.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -97,7 +102,7 @@
       "title": "Breach",
       "rate": "4.6",
       "release": "2021",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "breach.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -106,7 +111,7 @@
       "title": "Soul",
       "rate": "8.3",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "soul.png",
       "backgroundImage": "bg-ww.png",
       "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
@@ -121,7 +126,7 @@
       "title": "Fast & Furious Present",
       "rate": "6.9",
       "release": "2019",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "ff.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -130,7 +135,7 @@
       "title": "The Croods: A New Age",
       "rate": "7.6",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "croods.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -139,7 +144,7 @@
       "title": "Vanguard",
       "rate": "6.3",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "vanguard.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -148,7 +153,7 @@
       "title": "Wonder Woman 1984",
       "rate": "7.0",
       "release": "2007-01-17T08:00:00Z",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "wonder-woman.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -157,7 +162,7 @@
       "title": "Below Zero",
       "rate": "6.4",
       "release": "2022-01-17T08:00:00Z",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "below-zero.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -166,7 +171,7 @@
       "title": "The Little Things",
       "rate": "6.3",
       "release": "2021",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "the-little-things.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -175,7 +180,7 @@
       "title": "Outside the Wire",
       "rate": "6.5",
       "release": "2021",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "outside-wire.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -184,7 +189,7 @@
       "title": "Black Water: Abyss",
       "rate": "5.1",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "black-water.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -193,7 +198,7 @@
       "title": "Breach",
       "rate": "4.6",
       "release": "2021",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "breach.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -202,7 +207,7 @@
       "title": "Soul",
       "rate": "8.3",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "Family"],
       "image": "soul.png",
       "backgroundImage": "bg-ww.png",
       "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
@@ -217,7 +222,7 @@
       "title": "Fast & Furious Present",
       "rate": "6.9",
       "release": "2019",
-      "category": "action",
+      "category": ["Action", "Drama", "Family"],
       "image": "ff.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -226,7 +231,7 @@
       "title": "The Croods: A New Age",
       "rate": "7.6",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "comedy", "adventure"],
       "image": "croods.png",
       "backgroundImage": "bg-ww.png"
     },
@@ -235,7 +240,7 @@
       "title": "Vanguard",
       "rate": "6.3",
       "release": "2020",
-      "category": "action",
+      "category": ["Action", "Crime", "adventure"],
       "image": "vanguard.png",
       "backgroundImage": "bg-ww.png"
     }

@@ -14,11 +14,7 @@
         </div>
       </div>
       <div class="flex bg-gray-senary rounded py-1 px-3">
-        <font-awesome-icon
-          ref="chartIcon"
-          :icon="['fa', 'star']"
-          class="text-yellow-primary pt-1.5 pr-1.5 text-sm inline-block"
-        />
+        <img src="@/assets/images/icon/star.svg" alt="star-icon" />
         <p class="text-3xl font-bold text-black">{{ item.rate }}</p>
       </div>
     </div>
@@ -28,14 +24,14 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 @Component({})
 export default class AtomsCardsTestimony extends Vue {
-  @Prop({ required: false, type: Object }) readonly item!: any;
+  @Prop({ required: false, type: Object }) readonly item!: any
 
   get parsedDateYear() {
-    const tempYear: Date = new Date(this.item.date);
-    return tempYear.getFullYear();
+    const tempYear: Date = new Date(this.item.date)
+    return tempYear.getFullYear()
   }
 }
 </script>
