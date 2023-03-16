@@ -1,0 +1,243 @@
+{
+  "recommendation": [
+    {
+      "id": 0,
+      "title": "The New Mutants",
+      "rate": "7.0",
+      "release": "2020",
+      "category": "action",
+      "image": "new-mutant.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 1,
+      "title": "Soul",
+      "rate": "7.0",
+      "release": "2020",
+      "category": "action",
+      "image": "soul.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 2,
+      "title": "Tenet",
+      "rate": "7.0",
+      "release": "2020",
+      "category": "action",
+      "image": "tenet.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 3,
+      "title": "The Old Guard",
+      "rate": "7.0",
+      "release": "2020",
+      "category": "action",
+      "image": "old-guard.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 4,
+      "title": "Project Power",
+      "rate": "7.0",
+      "release": "2020",
+      "category": "action",
+      "image": "project-power.png",
+      "backgroundImage": "bg-ww.png"
+    }
+  ],
+  "movies": [
+    {
+      "id": 0,
+      "title": "Wonder Woman 1984",
+      "rate": "7.0",
+      "release": "2007-01-17T08:00:00Z",
+      "category": "action",
+      "image": "wonder-woman.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 1,
+      "title": "Below Zero",
+      "rate": "6.4",
+      "release": "2022-01-17T08:00:00Z",
+      "category": "action",
+      "image": "below-zero.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 2,
+      "title": "The Little Things",
+      "rate": "6.3",
+      "release": "2021",
+      "category": "action",
+      "image": "the-little-things.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 3,
+      "title": "Outside the Wire",
+      "rate": "6.5",
+      "release": "2021",
+      "category": "action",
+      "image": "outside-wire.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 4,
+      "title": "Black Water: Abyss",
+      "rate": "5.1",
+      "release": "2020",
+      "category": "action",
+      "image": "black-water.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 5,
+      "title": "Breach",
+      "rate": "4.6",
+      "release": "2021",
+      "category": "action",
+      "image": "breach.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 6,
+      "title": "Soul",
+      "rate": "8.3",
+      "release": "2020",
+      "category": "action",
+      "image": "soul.png",
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
+      "votes": 3261,
+      "status": "RELEASED",
+      "language": "ENGLISH",
+      "budget": "200000000",
+      "production": "DC ENTERTAINMENT"
+    },
+    {
+      "id": 7,
+      "title": "Fast & Furious Present",
+      "rate": "6.9",
+      "release": "2019",
+      "category": "action",
+      "image": "ff.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 8,
+      "title": "The Croods: A New Age",
+      "rate": "7.6",
+      "release": "2020",
+      "category": "action",
+      "image": "croods.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 9,
+      "title": "Vanguard",
+      "rate": "6.3",
+      "release": "2020",
+      "category": "action",
+      "image": "vanguard.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 10,
+      "title": "Wonder Woman 1984",
+      "rate": "7.0",
+      "release": "2007-01-17T08:00:00Z",
+      "category": "action",
+      "image": "wonder-woman.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 11,
+      "title": "Below Zero",
+      "rate": "6.4",
+      "release": "2022-01-17T08:00:00Z",
+      "category": "action",
+      "image": "below-zero.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 12,
+      "title": "The Little Things",
+      "rate": "6.3",
+      "release": "2021",
+      "category": "action",
+      "image": "the-little-things.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 13,
+      "title": "Outside the Wire",
+      "rate": "6.5",
+      "release": "2021",
+      "category": "action",
+      "image": "outside-wire.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 14,
+      "title": "Black Water: Abyss",
+      "rate": "5.1",
+      "release": "2020",
+      "category": "action",
+      "image": "black-water.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 15,
+      "title": "Breach",
+      "rate": "4.6",
+      "release": "2021",
+      "category": "action",
+      "image": "breach.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 16,
+      "title": "Soul",
+      "rate": "8.3",
+      "release": "2020",
+      "category": "action",
+      "image": "soul.png",
+      "backgroundImage": "bg-ww.png",
+      "overview": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
+      "votes": 3261,
+      "status": "RELEASED",
+      "language": "ENGLISH",
+      "budget": "200000000",
+      "production": "DC ENTERTAINMENT"
+    },
+    {
+      "id": 17,
+      "title": "Fast & Furious Present",
+      "rate": "6.9",
+      "release": "2019",
+      "category": "action",
+      "image": "ff.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 18,
+      "title": "The Croods: A New Age",
+      "rate": "7.6",
+      "release": "2020",
+      "category": "action",
+      "image": "croods.png",
+      "backgroundImage": "bg-ww.png"
+    },
+    {
+      "id": 19,
+      "title": "Vanguard",
+      "rate": "6.3",
+      "release": "2020",
+      "category": "action",
+      "image": "vanguard.png",
+      "backgroundImage": "bg-ww.png"
+    }
+  ]
+}
