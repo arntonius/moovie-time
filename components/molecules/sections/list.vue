@@ -41,42 +41,12 @@
               class="flex flex-col z-10 md:mx-2 mb-4 w-full md:w-60 divide-gray-100 rounded-lg shadow bg-gray-700"
             >
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-                <button
-                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
-                  @click="setSorting('Popularity Ascending')"
-                >
-                  Popularity Ascending
-                </button>
-                <button
-                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
-                  @click="setSorting('Popularity Descending')"
-                >
-                  Popularity Descending
-                </button>
-                <button
-                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
-                  @click="setSorting('Release Date Ascending')"
-                >
-                  Release Date Ascending
-                </button>
-                <button
-                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
-                  @click="setSorting('Release Date Descending')"
-                >
-                  Release Date Descending
-                </button>
-                <button
-                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
-                  @click="setSorting('Rating Ascending')"
-                >
-                  Rating Ascending
-                </button>
-                <button
-                  class="text-white px-2.5 py-1 md:py-3 w-full text-left text-xs md:text-base"
-                  @click="setSorting('Rating Descending')"
-                >
-                  Rating Descending
-                </button>
+                <kit-atoms-buttons-sort
+                  v-for="(type, key) in sortType"
+                  :key="key"
+                  :name="type"
+                  :click="() => setSorting(type)"
+                />
               </ul>
             </div>
           </div>
@@ -109,8 +79,8 @@
           </button>
           <div v-if="isSortGenreShow" class="px-1 py-2 md:p-4">
             <div
-              v-for="list in dataCategory"
-              :key="list.id"
+              v-for="(list, key) in dataCategory"
+              :key="key"
               class="flex items-center justify-between py-1 md:py-2 px-1"
             >
               <label
@@ -162,12 +132,25 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, namespace } from 'nuxt-property-decorator'
+import { Movies } from '~/types'
 const utils = namespace('utils')
 @Component({})
 export default class MoleculesSectionsList extends Vue {
   @utils.Getter activeCategoryData!: string
-  @Prop({ required: false, type: Array }) readonly dataCategory!: any
-  @Prop({ required: false, type: Array }) readonly dataMovies!: any
+  @Prop({ required: false, type: Array }) readonly dataCategory!: Array<{
+    name: string
+  }>
+
+  @Prop({ required: false, type: Array }) readonly dataMovies!: Array<Movies>
+
+  sortType: Array<string> = [
+    'Popularity Ascending',
+    'Popularity Descending',
+    'Release Date Ascending',
+    'Release Date Descending',
+    'Rating Ascending',
+    'Rating Descending',
+  ]
 
   tempMovies: any = this.dataMovies
   selectedCategory: any = []
@@ -181,7 +164,8 @@ export default class MoleculesSectionsList extends Vue {
   isLoadMoreShow: boolean = this.tempMovies.length > this.maxShow
 
   mounted() {
-    this.selectedCategory.push(this.activeCategoryData)
+    if (this.activeCategoryData !== '')
+      this.selectedCategory.push(this.activeCategoryData)
     this.handleSelectCategory()
   }
 
@@ -218,39 +202,39 @@ export default class MoleculesSectionsList extends Vue {
     this.sortingActive = value
   }
 
-  sortByReleaseDateDesc(a: any, b: any) {
-    return a.release < b.release ? -1 : a.release > b.release ? 1 : 0
+  sortByReleaseDateDesc(a: Movies, b: Movies) {
+    return b.release < a.release ? -1 : b.release > a.release ? 0 : 1
   }
 
-  sortByReleaseDateAsc(a: any, b: any) {
+  sortByReleaseDateAsc(a: Movies, b: Movies) {
     return a.release < b.release ? -1 : a.release > b.release ? 0 : 1
   }
 
-  sortByPopularityDesc(a: any, b: any) {
-    return parseInt(a.votes) - parseInt(b.votes)
+  sortByPopularityDesc(a: Movies, b: Movies) {
+    return a.votes - b.votes
   }
 
-  sortByPopularityAsc(a: any, b: any) {
-    return parseInt(b.votes) - parseInt(a.votes)
+  sortByPopularityAsc(a: Movies, b: Movies) {
+    return b.votes - a.votes
   }
 
-  sortByRateDesc(a: any, b: any) {
+  sortByRateDesc(a: Movies, b: Movies) {
     return parseInt(b.rate) - parseInt(a.rate)
   }
 
-  sortByRateAsc(a: any, b: any) {
-    return parseInt(b.rate) - parseInt(a.rate)
+  sortByRateAsc(a: Movies, b: Movies) {
+    return parseInt(a.rate) - parseInt(b.rate)
   }
 
-  sorting(data: any, fn: any) {
+  sorting(data: Array<Movies>, fn: any) {
     const temp = data
-    temp.sort((a: any, b: any) => {
+    temp.sort((a: Movies, b: Movies) => {
       return fn(a, b)
     })
     this.tempMovies = temp
   }
 
-  intersect = (a: any, b: any) => {
+  intersect = (a: Array<Movies>, b: Array<Movies>) => {
     const setB = new Set(b)
     return a.filter((el: any) => setB.has(el))
   }

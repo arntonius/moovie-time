@@ -15,6 +15,7 @@
   html {
     @apply font-montserrat;
   }
+
   h1 {
     @apply text-3xl;
   }

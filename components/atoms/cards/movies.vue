@@ -4,6 +4,7 @@
       <img
         :src="require(`@/assets/images/movies/${item.image}`)"
         class="h-44 w-32 md:h-80 md:w-56"
+        alt="movies-item"
         quality="30"
       />
       <div
@@ -45,20 +46,15 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { Movies } from '~/types'
 @Component({})
 export default class AtomsCardsMovies extends Vue {
-  @Prop({ required: false, type: Object }) readonly item!: any
-
+  @Prop({ required: false, type: Object }) readonly item!: Movies
   isHover: boolean = false
 
   get parsedDateYear() {
     const tempYear: Date = new Date(this.item.release)
     return tempYear.getFullYear()
   }
-
-  // get imgUrl() {
-  //   console.log("datas", this.item.image);
-  //   return "@/assets/movies/below-zero.png";
-  // }
 }
 </script>

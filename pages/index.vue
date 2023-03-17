@@ -12,9 +12,10 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import dataMockMovies from '@/mock/movies.json'
+import { Movies, RecommendationMovies } from '~/types'
 @Component({})
 export default class PagesIndex extends Vue {
-  dataMovies: any = dataMockMovies.movies
-  dataBanner: any = dataMockMovies.recommendation
+  dataMovies: Array<Movies> = dataMockMovies.movies
+  dataBanner: Array<RecommendationMovies> = dataMockMovies.recommendation
 }
 </script>

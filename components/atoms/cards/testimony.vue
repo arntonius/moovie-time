@@ -4,7 +4,7 @@
       <div class="flex items-center">
         <img
           :src="require(`@/assets/images/icon/${item.image}`)"
-          alt=""
+          alt="user-image-icon"
           quality="30"
           class="rounded-full w-12 h-12"
         />
@@ -25,9 +25,10 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { Review } from '~/types'
 @Component({})
 export default class AtomsCardsTestimony extends Vue {
-  @Prop({ required: false, type: Object }) readonly item!: any
+  @Prop({ required: false, type: Object }) readonly item!: Review
 
   get parsedDateYear() {
     const tempYear: Date = new Date(this.item.date)

@@ -13,9 +13,10 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import dataMockMovies from '@/mock/movies.json'
 import dataCategoryMovies from '@/mock/category.json'
+import { Movies } from '~/types'
 @Component({})
 export default class PgesListMovies extends Vue {
-  dataMovies: any = dataMockMovies.movies
-  dataCategory: any = dataCategoryMovies.data
+  dataMovies: Array<Movies> = dataMockMovies.movies
+  dataCategory: Array<{ name: string }> = dataCategoryMovies.data
 }
 </script>

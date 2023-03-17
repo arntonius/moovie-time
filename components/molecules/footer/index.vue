@@ -8,9 +8,7 @@
       </p>
       <img
         src="@/assets/images/logo/movie-time-secondary.png"
-        alt=""
-        class=""
-        quality="30"
+        alt="moovie-time-logo-secondary"
       />
       <p class="text-sm text-gray-secondary">
         Made with Nuxt + Typescript + Tailwind CSS ❤️
@@ -19,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Vue } from 'nuxt-property-decorator'
 @Component({})
 export default class MoleculesFooterIndex extends Vue {}
 </script>

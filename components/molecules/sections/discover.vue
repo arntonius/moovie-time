@@ -10,7 +10,7 @@
         >
           <swiper-slide v-for="(item, key) in dataBanner" :key="key">
             <kit-atoms-cards-banner
-              :id="key"
+              :id="item.id"
               :item="item"
               :is-highlight="activeIndexData === item.id"
             />
@@ -29,28 +29,16 @@
           <h4 class="text-base md:text-xl text-white pt-3">Discover Movies</h4>
         </div>
         <div class="flex items-center space-x-2 md:space-x-5">
-          <button
-            :class="
-              activeSort === 'rate'
-                ? 'bg-red-primary hover:bg-red-secondary'
-                : 'bg-black bg-opacity-20 hover:bg-gray-800'
-            "
-            class="py-1 md:py-1.5 px-2 cursor-pointer rounded-full"
-            @click="sortByPopularity()"
-          >
-            <p class="text-white text-xs md:text-sm">Popularity</p>
-          </button>
-          <button
-            :class="
-              activeSort === 'release'
-                ? 'bg-red-primary hover:bg-red-secondary'
-                : 'bg-black bg-opacity-20 hover:bg-gray-800'
-            "
-            class="py-1 md:py-1.5 cursor-pointer px-0 rounded-full"
-            @click="sortByReleaseDate()"
-          >
-            <p class="text-white text-xs md:text-sm z-10">Release Date</p>
-          </button>
+          <kit-atoms-buttons-selector
+            name="Popularity"
+            :is-active="activeSort === 'rate'"
+            :click="() => sortByPopularity()"
+          />
+          <kit-atoms-buttons-selector
+            name="Release Date"
+            :is-active="activeSort === 'release'"
+            :click="() => sortByReleaseDate()"
+          />
         </div>
       </div>
       <div
@@ -65,6 +53,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, namespace, Vue } from 'nuxt-property-decorator'
+import { Movies, RecommendationMovies } from '~/types'
 const utils = namespace('utils')
 
 @Component({})
@@ -72,8 +61,10 @@ export default class MoleculesSectionsDiscover extends Vue {
   @utils.Getter activeIndexData!: number
   @utils.Mutation setActiveIndex!: (value: number) => void
 
-  @Prop({ required: false, type: Array }) readonly dataMovies!: any
-  @Prop({ required: false, type: Array }) readonly dataBanner!: any
+  @Prop({ required: false, type: Array }) readonly dataMovies!: Array<Movies>
+  @Prop({ required: false, type: Array })
+  readonly dataBanner!: Array<RecommendationMovies>
+
   activeSort: 'rate' | 'release' = 'rate'
   tempMovies: any = this.dataMovies
 
