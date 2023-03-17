@@ -1,6 +1,8 @@
 <template>
   <div class="relative w-full">
-    <kit-molecules-header is-secondary />
+    <kit-molecules-header
+      :is-secondary="isHeaderSecondary && scrollPosition < 100"
+    />
     <kit-molecules-sections-detail
       :data-detail="dataDetail"
       :data-review="dataReview"
@@ -20,6 +22,9 @@ export default class PagesMoviesIndex extends Vue {
   dataRecommendationMovies: Array<RecommendationMovies> =
     dataMockMovies.recommendation
 
+  scrollPosition: any = null
+  isHeaderSecondary: boolean = true
+
   get dataDetail() {
     const id: string = this.$route.params.id
     const detail: Array<Movies> = dataMockMovies.movies.filter(
@@ -34,6 +39,14 @@ export default class PagesMoviesIndex extends Vue {
       (element: Review) => element.idMovies === parseInt(id)
     )
     return detail
+  }
+
+  updateScroll() {
+    this.scrollPosition = window.scrollY
+  }
+
+  mounted() {
+    window.addEventListener('scroll', this.updateScroll)
   }
 }
 </script>
