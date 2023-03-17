@@ -2,7 +2,7 @@
   <nuxt-link
     :id="id"
     :to="`/movies/${item.idMovie}`"
-    :class="isHighlight ? 'opacity-100' : 'opacity-40'"
+    :class="isHighlight ? 'opacity-100' : 'opacity-100 md:opacity-40'"
     class="flex flex-row w-72 md:w-full md:pb-12"
   >
     <img
