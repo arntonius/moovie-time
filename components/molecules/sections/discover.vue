@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-black-quartenary w-full h-full">
-    <div class="my-12 md:mb-0">
+  <div class="bg-black-quartenary w-full h-full relative">
+    <div class="pt-20 md:mb-0">
       <client-only>
         <swiper
           ref="mySwiperRef"
@@ -22,7 +22,7 @@
         </swiper>
       </client-only>
     </div>
-    <div class="w-full max-w-7xl mx-auto px-7">
+    <div class="w-full max-w-7xl mx-auto px-7 py-10 relative">
       <div class="flex w-full justify-between items-end">
         <div>
           <div class="w-28 h-1 bg-red-secondary" />
@@ -41,10 +41,12 @@
           />
         </div>
       </div>
-      <div
-        class="flex justify-between items-center flex-wrap mt-10 pb-28 space-y-4"
-      >
-        <div v-for="list in tempMovies" :key="list.id">
+
+      <div class="flex justify-between items-center flex-wrap mt-10 pb-28">
+        <div v-if="dataMovies.length === 0" class="flex flex-wrap gap-4">
+          <kit-atoms-skeleton-movies v-for="key in 10" :key="key" />
+        </div>
+        <div v-for="list in tempMovies" v-else :key="list.id" class="my-2">
           <kit-atoms-cards-movies :item="list" />
         </div>
       </div>

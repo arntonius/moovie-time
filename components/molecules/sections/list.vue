@@ -1,12 +1,13 @@
 <!-- eslint-disable vue/valid-v-model -->
 <template>
-  <div class="bg-black-quartenary w-full h-full flex">
-    <div class="w-full max-w-7xl mx-auto px-7 py-10">
+  <div class="bg-black-quartenary w-full h-full flex relative">
+    <div class="bg-black-senary h-96 w-full absolute z-0"></div>
+    <div class="w-full max-w-7xl mx-auto px-7 py-5 mt-32 z-10">
       <div>
         <div class="w-28 h-1 bg-red-secondary" />
         <h4 class="text-base md:text-xl text-white pt-3">Movies</h4>
       </div>
-      <div class="mt-10 md:mt-16 mb-27 flex flex-col md:flex-row w-full">
+      <div class="mt-10 md:mt-14 mb-27 flex flex-col md:flex-row w-full">
         <div
           class="w-92 h-min bg-navy-primary md:bg-gradient-to-b md:from-navy-primary md:to-navy-secondary rounded-xl p-2"
         >
@@ -100,6 +101,13 @@
           </div>
         </div>
         <div
+          v-if="dataMovies.length === 0"
+          class="flex flex-wrap gap-4 md:ml-8 mt-5 md:mt-0"
+        >
+          <kit-atoms-skeleton-movies v-for="key in 8" :key="key" />
+        </div>
+        <div
+          v-else
           class="w-full flex justify-between flex-wrap mt-5 md:mt-0 md:ml-8 gap-3"
         >
           <div

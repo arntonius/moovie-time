@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full">
-    <kit-molecules-header />
+    <kit-molecules-header is-secondary />
     <kit-molecules-sections-detail
       :data-detail="dataDetail"
       :data-review="dataReview"

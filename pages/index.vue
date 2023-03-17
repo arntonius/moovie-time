@@ -4,7 +4,6 @@
     <kit-molecules-sections-discover
       :data-movies="dataMovies"
       :data-banner="dataBanner"
-      class="py-20"
     />
     <kit-molecules-footer />
   </div>

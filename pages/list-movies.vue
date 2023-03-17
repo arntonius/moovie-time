@@ -4,7 +4,6 @@
     <kit-molecules-sections-list
       :data-movies="dataMovies"
       :data-category="dataCategory"
-      class="pt-32"
     />
     <kit-molecules-footer />
   </div>

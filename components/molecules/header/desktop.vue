@@ -12,7 +12,8 @@
           />
         </nuxt-link>
         <div
-          class="relative bg-gray-900 rounded-lg flex items-center py-3 px-5 w-full ml-9"
+          :class="isSecondary ? 'bg-opacity-25' : 'bg-opacity-100'"
+          class="relative bg-black-quartenary rounded-lg flex items-center py-3 px-5 w-full ml-9"
         >
           <img
             src="@/assets/images/icon/movies.svg"
@@ -22,7 +23,10 @@
           <input
             type="text"
             :value="input"
-            class="w-full text-white text-md bg-gray-900 placeholder-white outline-none border-none"
+            :class="
+              isSecondary ? 'bg-transparent bg-opacity-25' : 'bg-opacity-100'
+            "
+            class="w-full text-white text-md bg-black-quartenary placeholder-white outline-none border-none"
             placeholder="Find Movie"
             @input="handleInput"
           />
@@ -90,13 +94,14 @@
 import { Component, Prop, Vue, Watch, namespace } from 'nuxt-property-decorator'
 import dataMockCategory from '@/mock/category.json'
 import dataMovies from '@/mock/movies.json'
-import { Movies } from '~/types'
 const utils = namespace('utils')
 @Component({})
 export default class MoleculesHeaderIndex extends Vue {
   @utils.Mutation setActiveCategory!: (value: string) => void
 
-  @Prop({ required: false, type: Array }) readonly items!: Movies
+  @Prop({ required: false, type: Boolean, default: false })
+  readonly isSecondary!: boolean
+
   isCategoryShow: boolean = false
   dataCategory: any = dataMockCategory.data
   input: string = ''

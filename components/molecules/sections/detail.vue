@@ -112,7 +112,7 @@
       <div class="w-full max-w-7xl mx-auto px-7">
         <h6 class="my-12 text-white text-sm">RECOMMENDATION MOVIES</h6>
         <div class="flex justify-between items-center flex-wrap mt-9 mb-11">
-          <div v-for="list in dataRecommendation" :key="list.id">
+          <div v-for="list in dataRecommendation.slice(0, 5)" :key="list.id">
             <kit-atoms-cards-movies :item="list" />
           </div>
         </div>
