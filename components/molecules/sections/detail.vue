@@ -8,6 +8,9 @@
         quality="30"
       />
       <div
+        class="hidden md:block w-full h-full absolute bg-black-primary opacity-60 top-0"
+      ></div>
+      <div
         class="hidden md:flex items-center absolute bottom-0 bg-black-primary opacity-50 h-20 z-10 w-full"
       ></div>
       <div class="w-full h-full md:absolute top-32 md:top-72 z-20">
@@ -52,7 +55,7 @@
                 class="flex flex-col md:flex-row md:items-center md:h-20 mt-5"
               >
                 <div
-                  class="hidden md:flex items-center pr-8 md:border-r-2 border-gray-400"
+                  class="hidden md:flex items-center pr-8 md:border-r border-gray-400"
                 >
                   <img src="@/assets/images/icon/star.svg" alt="star-icon" />
                   <p
@@ -81,6 +84,7 @@
                 />
                 <kit-atoms-labels
                   title="PRODUCTION"
+                  is-last-element
                   :value="dataDetail.production || 'none'"
                 />
               </div>
