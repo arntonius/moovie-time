@@ -81,7 +81,7 @@ export default class MoleculesSectionsDiscover extends Vue {
     slidesPerView: 2,
     slidesPerGroup: 1,
     spaceBetween: 290,
-
+    loop: true,
     initialSlide: 0,
     breakpoints: {
       1024: {

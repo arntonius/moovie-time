@@ -14,7 +14,7 @@
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 @Component({})
 export default class MoleculesHeaderIndex extends Vue {
-  @Prop({ required: false, type: Boolean, default: true })
+  @Prop({ required: false, type: Boolean, default: false })
   readonly isSecondary!: boolean
 }
 </script>
